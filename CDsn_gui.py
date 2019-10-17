@@ -24,6 +24,7 @@ for f in ( flist ):
     if ( f.endswith( '.csv' ) ):
         csvlist.append( f )
 	# Only append csv files for combo box file choice.
+    csvlist.sort()	
 
 rownum = 0
  
@@ -35,27 +36,26 @@ def clicked():
 	if( snb == 1 ):
 		# Suff
 		msg = 'Running ' + fname + ' Y: ' + str( Yval ) + ' Suff'
-		lblfille.configure(text = msg )
+		lblfille.configure(text = msg, font=("Helvetica", 12) )
 		finmsg = 'Finished ' + fname + ' Y: ' + str( Yval ) + ' Suff'
 		CDsuffp3_multi.suff_main( fname, Yval )
-		lblfille.configure(text = finmsg )
+		lblfillf.configure(text = finmsg, font=("Helvetica", 12) )
 	elif( snb == 2 ):
 		# Nec
 		msg = 'Running ' + fname + ' Y: ' + str( Yval ) + ' Nec'
-		lblfille.configure(text = msg )
+		lblfille.configure(text = msg, font=("Helvetica", 12) )
 		finmsg = 'Finished ' + fname + ' Y: ' + str( Yval ) + ' Nec'
 		CDnecp3_multi.nec_main( fname, Yval )
-		lblfille.configure(text = finmsg )
+		lblfillf.configure(text = finmsg, font=("Helvetica", 12) )
 	elif( snb == 3 ):
 		# Suff & Nec
 		msg = 'Running ' + fname + ' Y: ' + str( Yval ) + ' Suff & Nec'
-		lblfille.configure(text = msg )
+		lblfille.configure(text = msg, font=("Helvetica", 12) )
 		finmsg = 'Finished ' + fname + ' Y: ' + str( Yval ) + ' Suff & Nec'
 		CDsuffp3_multi.suff_main( fname, Yval )
 		CDnecp3_multi.nec_main( fname, Yval )
-		lblfille.configure(text = finmsg )
+		lblfillf.configure(text = finmsg, font=("Helvetica", 12) )
 
-	lblfillf.configure(text = 'xxxxxxxxxxxx' )
 
 window = Tk()
 
@@ -76,7 +76,7 @@ lblfillbfrqca.grid(column=0, row=rownum)
 #print('R:', rownum)
 rownum += 1
  
-lblqca = Label(window, text="Qualitative Comparitive Analysis", font=("Arial Bold", 20) )
+lblqca = Label(window, text="Qualitative Comparative Analysis", font=("Arial Bold", 20) )
  
 lblqca.grid(column=0, row=rownum)
 #print('R:', rownum)
@@ -99,9 +99,8 @@ lblfillc = Label(window, text="")
 lblfillc.grid(column=0, row=rownum)
 #print('R:', rownum)
 rownum += 1
- 
 combofn = Combobox(window)
-combofn['values'] = csvlist 
+combofn['values'] = csvlist
 combofn.current(0) #set the selected item
 combofn.grid(column=0, row = rownum )
 #print('R:', rownum)
@@ -181,15 +180,15 @@ btn.grid(column=0, row = rownum)
 #print('R:', rownum)
 rownum += 1
 
-lblfillf = Label(window, text="")
- 
-lblfillf.grid(column=0, row = rownum)
-#print('R:', rownum)
-rownum += 1
-
 lblfille = Label(window, text="")
  
 lblfille.grid(column=0, row = rownum)
+#print('R:', rownum)
+rownum += 1
+
+lblfillf = Label(window, text="")
+ 
+lblfillf.grid(column=0, row = rownum)
 #print('R:', rownum)
 rownum += 1
 
